@@ -100,19 +100,17 @@ footer {
 
 /* ロゴ */
 .logo {
-  width: 280px;
+  width: 300px;
+  border-radius: 50%;
   margin-bottom: 20px;
-  filter: drop-shadow(0 5px 8px rgba(0,0,0,0.15));
 }
 
-  /* 作品画像 */
-.main-photo {
-  width: 80%;
-  max-width: 700px;
-  border-radius: 20px;
-  margin: 30px auto;
-  display: block;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+ /* 作品写真 */
+.work img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px;
 }
   
 </style>
@@ -153,23 +151,48 @@ footer {
 
 <h2>🧸 作品紹介</h2>
 
+<!-- 作品ギャラリー -->
 <div class="works">
 
 <div class="work">
-<p>作品写真</p>
-<p>愛犬・愛猫のぬいぐるみ</p>
+
+<img src="dog.jpg" alt="犬のぬいぐるみ">
+
+<h3>愛犬のぬいぐるみ</h3>
+
+<p>
+大切な家族の姿を、
+世界にひとつだけの作品に。
+</p>
+
 </div>
 
 
 <div class="work">
-<p>作品写真</p>
-<p>思い出を形にする作品</p>
+
+<img src="cat.jpg" alt="猫のぬいぐるみ">
+
+<h3>愛猫のぬいぐるみ</h3>
+
+<p>
+写真をもとに、
+その子らしい表情を大切に制作します。
+</p>
+
 </div>
 
 
 <div class="work">
-<p>作品写真</p>
-<p>オーダーメイド制作</p>
+
+<img src="other.jpg" alt="オーダー作品">
+
+<h3>オーダーメイド作品</h3>
+
+<p>
+大切な思い出を、
+いつまでも残せる形に。
+</p>
+
 </div>
 
 </div>
