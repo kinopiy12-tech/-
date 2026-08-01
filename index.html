@@ -11,18 +11,35 @@ body {
   margin: 0;
   font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
   background-color: #fff8f3;
+
   background-image:
-    radial-gradient(#f0cdb5 2px, transparent 2px);
-  background-size: 50px 50px;
+    radial-gradient(ellipse 8px 14px at 20% 30%, #f3d0c0 40%, transparent 41%),
+    radial-gradient(ellipse 8px 14px at 70% 60%, #f6dfc8 40%, transparent 41%),
+    radial-gradient(ellipse 7px 12px at 40% 80%, #f0c8b5 40%, transparent 41%);
+
+  background-size: 180px 180px;
+
   color: #5b4636;
 }
   
-header {
+/* header {
   text-align: center;
   padding: 60px 20px;
   background: #f6e6d8;
-}
+} */
 
+  header {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #f6e6d8;
+
+  background-image:
+    radial-gradient(ellipse 10px 18px at 20% 30%, rgba(255,255,255,0.5) 40%, transparent 41%),
+    radial-gradient(ellipse 8px 15px at 80% 70%, rgba(240,190,170,0.4) 40%, transparent 41%);
+
+  background-size: 160px 160px;
+}
+  
 header h1 {
   font-size: 40px;
   margin-bottom: 10px;
@@ -42,12 +59,6 @@ nav a {
   margin: 0 10px;
   color: #8b6650;
   text-decoration: none;
-}
-
-section {
-  max-width: 900px;
-  margin: 70px auto;
-  padding: 20px;
 }
 
 h2 {
@@ -97,13 +108,13 @@ footer {
   background: #f6e6d8;
 }
 
-/* ロゴ */
+/* ロゴ画像 */
 .logo {
   width: 300px;
   height: 300px;
   object-fit: cover;
   border-radius: 50%;
-  margin-bottom: 20px;
+  display: block;
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
@@ -166,15 +177,7 @@ header p {
   margin-bottom: 20px;
 }
 
-/* ロゴ画像 */
-.logo {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 50%;
-  display: block;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
+
   /* スマホ用ナビ */
 @media screen and (max-width: 600px) {
 
