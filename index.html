@@ -285,6 +285,78 @@ header p {
 }
 
 }
+
+  /*==============================
+  オーダー制作例（横スクロール）
+==============================*/
+
+.gallery{
+  position:relative;
+}
+
+/* 横スクロール */
+.works-scroll{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding:10px 35px 20px;
+  scroll-behavior:smooth;
+}
+
+/* スクロールバー */
+.works-scroll::-webkit-scrollbar{
+  height:8px;
+}
+
+.works-scroll::-webkit-scrollbar-thumb{
+  background:#d9b49c;
+  border-radius:10px;
+}
+
+/* カード */
+.work{
+  flex:0 0 280px;
+  scroll-snap-align:center;
+  transition:.3s;
+}
+
+.work:hover{
+  transform:translateY(-5px);
+}
+
+/* 矢印 */
+.arrow{
+  position:absolute;
+  top:45%;
+  transform:translateY(-50%);
+  font-size:42px;
+  color:rgba(201,143,107,.45);
+  pointer-events:none;
+  user-select:none;
+  z-index:10;
+}
+
+.left{
+  left:0;
+}
+
+.right{
+  right:0;
+}
+
+/* スマホ */
+@media screen and (max-width:600px){
+
+.work{
+  flex:0 0 85%;
+}
+
+.arrow{
+  display:block;
+}
+
+}
   
 </style>
 
@@ -328,85 +400,58 @@ header p {
 
 <div class="gallery">
 
-  <div class="arrow left">←</div>
+<div class="arrow left">←</div>
 
-  <div class="works-scroll">
+<div class="works-scroll">
 
-    <div class="work">
+<div class="work">
 
-      <img src="IMG_7702.jpeg" alt="犬のぬいぐるみ">
+<img src="IMG_7702.jpeg" alt="犬のぬいぐるみ">
 
-      <h3>愛犬のぬいぐるみ</h3>
+<h3>愛犬のぬいぐるみ</h3>
 
-      <p>
-      大切な家族の姿を、
-      世界にひとつだけの作品に。
-      </p>
-
-    </div>
-
-    <div class="work">
-
-      <img src="IMG_7722.jpeg" alt="猫のぬいぐるみ">
-
-      <h3>愛猫のぬいぐるみ</h3>
-
-      <p>
-      写真をもとに、
-      その子らしい表情を大切に制作します。
-      </p>
-
-    </div>
-
-    <!-- 他の作品もここに続く -->
-
-  </div>
-
-  <div class="arrow right">→</div>
+<p>
+大切な家族の姿を、
+世界にひとつだけの作品に。
+</p>
 
 </div>
-
-</section>
 
 
 <div class="work">
 
-<img src="logo.png" alt="オーダー作品">
+<img src="IMG_7722.jpeg" alt="猫のぬいぐるみ">
+
+<h3>愛猫のぬいぐるみ</h3>
+
+<p>
+写真をもとに、
+その子らしい表情を大切に制作します。
+</p>
+
+</div>
+
+
+<div class="work">
+
+<img src="logo.png" alt="オーダーメイド作品">
 
 <h3>オーダーメイド作品</h3>
 
 <p>
-大切な思い出を、
-いつまでも残せる形に。
+世界にひとつだけの
+オーダーメイド作品です。
 </p>
 
 </div>
 
 </div>
 
-</section>
-
-<section id="about">
-
-<h2>🌿 制作へのこだわり</h2>
-
-<div class="card">
-
-<p>
-ひとつひとつ丁寧に手作りし、
-その子らしい表情や雰囲気を大切に制作しています。
-</p>
-
-<p>
-写真から大切な家族の姿を形に残す、
-世界にひとつだけのぬいぐるみをお届けします。
-</p>
+<div class="arrow right">→</div>
 
 </div>
 
 </section>
-
-
 
 <section id="price">
 
