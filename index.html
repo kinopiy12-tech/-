@@ -6,7 +6,10 @@
 
 <title>はなのしっぽ | オーダーメイドぬいぐるみ</title>
 
+
+  
 <style>
+  
 body {
   margin: 0;
   font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
@@ -21,6 +24,8 @@ body {
 
   color: #5b4636;
 }
+
+
   
 /* header {
   text-align: center;
@@ -74,21 +79,6 @@ h2 {
   padding: 25px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
-
-/* .works {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.work {
-  background: white;
-  border-radius: 15px;
-  padding: 20px;
-  flex: 1;
-  min-width: 220px;
-  text-align: center;
-} */
 
   /* 作品横スクロールギャラリー */
 .works-scroll {
@@ -148,30 +138,17 @@ header p {
   line-height: 1.8;
 }
 
-
-/* 作品カード */
-/* .work {
-  transition: 0.3s;
-}
-
-.work:hover {
-  transform: translateY(-5px);
-} */
-
-
-/* 作品画像 */
-/* .work img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 15px;
-} */
   .work img {
   width: 100%;
   height: auto;
   border-radius: 15px;
+    cursor:pointer;
+transition:.3s;
 }
 
+  .work img:hover{
+  transform:scale(1.03);
+}
 
 /* オーダーボタン */
 .button {
@@ -325,24 +302,44 @@ header p {
   transform:translateY(-5px);
 }
 
-/* 矢印 */
-.arrow{
-  position:absolute;
-  top:45%;
-  transform:translateY(-50%);
-  font-size:42px;
-  color:rgba(201,143,107,.45);
-  pointer-events:none;
-  user-select:none;
-  z-index:10;
+/* 左右ボタン */
+/* 左右ボタン */
+.arrow {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(5px);
+  color: #c98f6b;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,.15);
+  transition: all .3s ease;
+  z-index: 10;
 }
 
-.left{
-  left:0;
+.arrow:hover {
+  background: white;
+  transform: translateY(-50%) scale(1.1);
 }
 
-.right{
-  right:0;
+.left {
+  left: -20px;
+}
+
+.right {
+  right: -20px;
+}
+
+/* 押せない時 */
+.arrow.disabled {
+  opacity: 0.25;
+  cursor: default;
+  transform: translateY(-50%);
 }
 
 /* スマホ */
@@ -356,6 +353,36 @@ header p {
   display:block;
 }
 
+}
+
+  /*==============================
+  画像拡大
+==============================*/
+
+.lightbox{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.8);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.lightbox img{
+  max-width:90%;
+  max-height:85%;
+  border-radius:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+.close{
+  position:absolute;
+  top:20px;
+  right:30px;
+  color:white;
+  font-size:45px;
+  cursor:pointer;
 }
   
 </style>
@@ -399,9 +426,9 @@ header p {
 <h2>🧸 オーダー制作例</h2>
 
 <div class="gallery">
-
-<div class="arrow left">←</div>
-
+  
+<button class="arrow left" id="scrollLeft">❮</button>
+  
 <div class="works-scroll">
 
 <div class="work">
@@ -447,12 +474,32 @@ header p {
 
 </div>
 
-<div class="arrow right">→</div>
+<button class="arrow right" id="scrollRight">❯</button>
 
 </div>
 
 </section>
 
+<section id="about">
+
+<h2>🌿 制作へのこだわり</h2>
+
+<div class="card">
+
+<p>
+ひとつひとつ丁寧に手作りし、
+その子らしい表情や雰囲気を大切に制作しています。
+</p>
+
+<p>
+写真から大切な家族の姿を形に残す、
+世界にひとつだけのぬいぐるみをお届けします。
+</p>
+
+</div>
+
+</section>
+  
 <section id="price">
 
 <h2>💰 料金について</h2>
@@ -591,8 +638,99 @@ Instagramまたはメールよりお気軽にお問い合わせください。
 
 <p>© はなのしっぽ</p>
 
-</footer>
+</footer><!-- 画像拡大 -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img id="lightbox-img" src="">
+</div>
 
+  <script>
+const gallery = document.querySelector(".works-scroll");
 
+const leftBtn = document.getElementById("scrollLeft");
+const rightBtn = document.getElementById("scrollRight");
+
+// ボタン状態更新
+function updateButtons(){
+
+  const maxScroll =
+    gallery.scrollWidth - gallery.clientWidth;
+
+  if(gallery.scrollLeft <= 5){
+    leftBtn.classList.add("disabled");
+  }else{
+    leftBtn.classList.remove("disabled");
+  }
+
+  if(gallery.scrollLeft >= maxScroll - 5){
+    rightBtn.classList.add("disabled");
+  }else{
+    rightBtn.classList.remove("disabled");
+  }
+}
+
+// 左へ
+leftBtn.addEventListener("click", ()=>{
+
+  if(leftBtn.classList.contains("disabled")) return;
+
+  gallery.scrollBy({
+    left:-320,
+    behavior:"smooth"
+  });
+
+});
+
+// 右へ
+rightBtn.addEventListener("click", ()=>{
+
+  if(rightBtn.classList.contains("disabled")) return;
+
+  gallery.scrollBy({
+    left:320,
+    behavior:"smooth"
+  });
+
+});
+
+gallery.addEventListener("scroll", updateButtons);
+
+window.addEventListener("load", updateButtons);
+window.addEventListener("resize", updateButtons);
+
+    // 画像拡大
+const images = document.querySelectorAll(".work img");
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+images.forEach(img=>{
+
+  img.addEventListener("click",()=>{
+
+    lightbox.style.display="flex";
+    lightboxImg.src=img.src;
+
+  });
+
+});
+
+document.querySelector(".close").onclick=()=>{
+
+  lightbox.style.display="none";
+
+};
+
+lightbox.onclick=(e)=>{
+
+  if(e.target===lightbox){
+
+    lightbox.style.display="none";
+
+  }
+
+};
+
+</script>
 </body>
 </html>
