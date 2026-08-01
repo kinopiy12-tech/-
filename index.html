@@ -224,6 +224,43 @@ header p {
   padding: 20px;
   background: transparent;
 }
+
+  /* お問い合わせボタン横並び */
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+
+.contact-buttons .button {
+  margin: 0;
+}
+
+
+/* 補足文章 */
+.contact-text {
+  text-align: right;
+  font-size: 14px;
+  margin-top: 25px;
+  line-height: 1.8;
+}
+
+
+/* スマホ対応 */
+@media screen and (max-width: 600px) {
+
+.contact-buttons {
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-text {
+  text-align: center;
+}
+
+}
   
 </style>
 
