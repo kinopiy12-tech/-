@@ -10,35 +10,17 @@
 body {
   margin: 0;
   font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-
   background-color: #fff8f3;
-
   background-image:
-    radial-gradient(circle, #f2cfc0 2px, transparent 3px),
-    radial-gradient(circle, #efd8b8 2px, transparent 3px);
-
-  background-size:
-    45px 45px,
-    70px 70px;
-
-  background-position:
-    0 0,
-    35px 35px;
-
+    radial-gradient(#f0cdb5 2px, transparent 2px);
+  background-size: 50px 50px;
   color: #5b4636;
 }
   
 header {
   text-align: center;
   padding: 60px 20px;
-  background-color: #f6e6d8;
-
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,0.5) 4px, transparent 5px),
-    radial-gradient(circle, rgba(240,180,160,0.35) 5px, transparent 6px);
-
-  background-size: 60px 60px, 90px 90px;
-  background-position: 0 0, 30px 30px;
+  background: #f6e6d8;
 }
 
 header h1 {
@@ -184,19 +166,6 @@ header p {
   margin-bottom: 20px;
 }
 
-  /* ロゴ周りの花柄フレーム */
-.logo-frame {
-  display: inline-block;
-  padding: 20px;
-  border-radius: 50%;
-  background-image:
-    radial-gradient(circle at 20% 20%, #f2b8a5 8px, transparent 9px),
-    radial-gradient(circle at 80% 30%, #f5d0c5 10px, transparent 11px),
-    radial-gradient(circle at 30% 80%, #efd1a8 8px, transparent 9px),
-    radial-gradient(circle at 75% 75%, #f2b8a5 7px, transparent 8px);
-  background-color: #fff8f3;
-}
-
 /* ロゴ画像 */
 .logo {
   width: 300px;
@@ -222,6 +191,13 @@ header p {
   }
 
 }
+
+  section {
+  max-width: 900px;
+  margin: 70px auto;
+  padding: 20px;
+  background: transparent;
+}
   
 </style>
 
@@ -233,9 +209,7 @@ header p {
 
 <header>
 
-<div class="logo-frame">
-  <img src="logo.png" alt="はなのしっぽ ロゴ" class="logo">
-</div>
+<img src="logo.png" alt="はなのしっぽ ロゴ" class="logo">
 
 <h1>🐾 はなのしっぽ 🐾</h1>
 
